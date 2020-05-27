@@ -10,4 +10,4 @@ export { default as Typography } from './Typography';
 export { default as UserList } from './UserList';
 
 // My View
-export { default as Home } from './Home';
+export { default as Evaluation } from './Evaluation';

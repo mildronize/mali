@@ -6,7 +6,7 @@ import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
 
 import {
   Dashboard as DashboardView,
-  Home as HomeView,
+  Evaluation as EvaluationView,
   ProductList as ProductListView,
   UserList as UserListView,
   Typography as TypographyView,
@@ -24,13 +24,13 @@ const Routes = () => {
       <Redirect
         exact
         from="/"
-        to="/home"
+        to="/evaluation"
       />
       <RouteWithLayout
-        component={HomeView}
+        component={EvaluationView}
         exact
         layout={MainLayout}
-        path="/home"
+        path="/evaluation"
       />
       <RouteWithLayout
         component={DashboardView}
