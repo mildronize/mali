@@ -51,11 +51,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const UsersTable = props => {
-  const { className, users, ...rest } = props;
+  const { className, users, selectedUser, setSelectedUser,  ...rest } = props;
 
   const classes = useStyles();
 
-  const [selectedUsers, setSelectedUsers] = useState("");
+  // const [selectedUser, setSelectedUser] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [page, setPage] = useState(0);
 
@@ -64,10 +64,10 @@ const UsersTable = props => {
   };
 
   const clickRow = (event, id) => {
-    if(id === selectedUsers)
-      setSelectedUsers("");
+    if(id === selectedUser)
+      setSelectedUser("");
     else 
-      setSelectedUsers(id);
+      setSelectedUser(id);
   };
 
   const handleRowsPerPageChange = event => {
@@ -101,7 +101,7 @@ const UsersTable = props => {
                     className={classes.tableRow}
                     hover
                     key={user.id}
-                    selected={selectedUsers === user.id }
+                    selected={selectedUser === user.id }
                     onClick={event => clickRow(event, user.id)} 
                   >
                   

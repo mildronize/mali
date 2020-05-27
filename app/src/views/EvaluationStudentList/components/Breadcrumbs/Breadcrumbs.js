@@ -14,20 +14,23 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const MyBreadcrumbs = props => {
-  const { className, ...rest } = props;
+  const { className, selectedName, ...rest } = props;
   const classes = useStyles();
 
   return (
-    <Breadcrumbs 
+    <Breadcrumbs
       className={clsx(classes.root, className)}
       aria-label="breadcrumb"
-      separator={<NavigateNextIcon/>}
+      separator={<NavigateNextIcon />}
     >
       <Link variant="subtitle1" color="inherit" href="/">
         Evaluation
      </Link>
       <Typography variant="subtitle1" color="textPrimary">DM 1</Typography>
       <Typography variant="subtitle1" color="textPrimary">Progress 1</Typography>
+      {selectedName !== "" && <Typography variant="subtitle1" color="textPrimary">{selectedName}</Typography>}
+
+
     </Breadcrumbs>
   );
 }
