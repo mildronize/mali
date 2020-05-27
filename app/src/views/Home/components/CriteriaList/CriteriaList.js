@@ -14,13 +14,11 @@ import {
   ListItemAvatar,
   ListItemText,
   IconButton,
-  Typography as MuiTypography
+  Typography
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-
-import mockData from './data';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -39,11 +37,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 const LatestProducts = props => {
-  const { className, ...rest } = props;
+  const { className, products, ...rest } = props;
 
   const classes = useStyles();
 
-  const [products] = useState(mockData);
+  // const [products] = useState(mockData);
 
   return (
     <Card
@@ -51,16 +49,20 @@ const LatestProducts = props => {
       className={clsx(classes.root, className)}
     >
       <CardHeader
-        subtitle={`${products.length} in total`}
         title="DM I"
       />
+
       <Divider />
       <CardContent className={classes.content}>
         <List>
           {products.map((product, i) => (
+          
             <ListItem
+              button 
               divider={i < products.length - 1}
               key={product.id}
+              component="a"
+              href="#simple-list"
             >
               <ListItemAvatar>
                 <CheckCircleIcon />
@@ -69,7 +71,7 @@ const LatestProducts = props => {
                 primary={product.name}
                 // secondary={`Updated ${product.updatedAt.fromNow()}`}
               />
-              <MuiTypography variant="subtitle1">10%</MuiTypography>
+              <Typography variant="subtitle1">{product.ratio}%</Typography>
             </ListItem>
           ))}
         </List>
