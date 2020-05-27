@@ -3,6 +3,9 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import { Divider, Drawer } from '@material-ui/core';
+
+// Icons
+import HomeIcon from '@material-ui/icons/Home';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PeopleIcon from '@material-ui/icons/People';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
@@ -43,6 +46,11 @@ const Sidebar = props => {
   const classes = useStyles();
 
   const pages = [
+    {
+      title: 'Evaluation',
+      href: '/home',
+      icon: <HomeIcon />
+    },
     {
       title: 'Dashboard',
       href: '/dashboard',
