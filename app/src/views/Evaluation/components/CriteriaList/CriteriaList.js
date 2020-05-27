@@ -63,7 +63,7 @@ const LatestProducts = props => {
               divider={i < products.length - 1}
               key={product.id}
               component="a"
-              href="#simple-list"
+              href="/evaluation/student-list"
             >
               <ListItemAvatar>
                 { product.isDone && <CheckCircleIcon /> }

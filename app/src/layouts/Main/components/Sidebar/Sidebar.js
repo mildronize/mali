@@ -50,7 +50,7 @@ const Sidebar = props => {
   const pages = [
     {
       title: 'Evaluation',
-      href: '/home',
+      href: '/evaluation',
       icon: <HomeIcon />
     },
     {
