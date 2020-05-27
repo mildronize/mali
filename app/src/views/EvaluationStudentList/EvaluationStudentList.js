@@ -23,9 +23,9 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2, 0)
   },
   breadcrumbs: {
-    marginLeft: theme.spacing(1),
-    // marginTop: theme.spacing(4),
-    // marginBottom: theme.spacing(3),
+    // marginLeft: theme.spacing(1),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1),
   }
 }));
 
@@ -52,7 +52,7 @@ const EvaluationStudentList = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={4} >
+      <Grid container  >
         <Grid item xs={12} >
           <Typography variant="h1">Evaluation</Typography>
         </Grid>
@@ -61,6 +61,7 @@ const EvaluationStudentList = () => {
         >
           <Breadcrumbs className={classes.breadcrumbs}
             selectedName={selectedName}
+            setSelectedUser={setSelectedUser}
           />
         </Grid>
         {
