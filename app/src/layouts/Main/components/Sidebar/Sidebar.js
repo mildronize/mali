@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { Divider, Drawer } from '@material-ui/core';
+import { Divider, Drawer, Box, IconButton, Hidden } from '@material-ui/core';
 
 // Icons
 import HomeIcon from '@material-ui/icons/Home';
@@ -14,8 +15,9 @@ import ImageIcon from '@material-ui/icons/Image';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import { Profile, SidebarNav, UpgradePlan } from './components';
+import { SidebarNav, UpgradePlan } from './components';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -105,8 +107,26 @@ const Sidebar = props => {
         {...rest}
         className={clsx(classes.root, className)}
       >
-        <Profile />
-        <Divider className={classes.divider} />
+        {/* <Profile /> */}
+        <Hidden lgUp>
+          <Box display="flex" >
+            <Box component="span" mr={2}>
+              <IconButton
+                color="inherit"
+                onClick={onClose}
+              >
+                <ArrowBackIcon />
+              </IconButton>
+            </Box>
+            <Box component="span" mt={1}>
+              <img
+                alt="Logo"
+                src="/images/logos/logo--black.svg"
+              />
+            </Box>
+          </Box>
+          <Divider className={classes.divider} />
+        </Hidden>
         <SidebarNav
           className={classes.nav}
           pages={pages}

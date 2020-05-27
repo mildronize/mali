@@ -33,9 +33,6 @@ const Selector = () => {
         value={academicYear}
         onChange={handleChange}
       >
-        <MenuItem value="">
-          <em>None</em>
-        </MenuItem>
         <MenuItem value={"2562/2"}>2562/2</MenuItem>
         <MenuItem value={"2563/1"}>2563/1</MenuItem>
       </Select>
