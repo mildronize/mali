@@ -13,6 +13,11 @@ import mockDataDM2 from './data-dm2';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(4)
+  },
+  breadcrumbs: {
+    marginLeft: theme.spacing(1),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
   }
 }));
 
@@ -27,7 +32,7 @@ const Selector = () => {
 
   return (
     <FormControl >
-     
+
       <Select
         labelId="demo-simple-select-helper-label"
         id="demo-simple-select-helper"
@@ -51,19 +56,16 @@ const Dashboard = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={4} >
+      <Grid container spacing={4}>
         <Grid item lg={6} md={6} xl={6} xs={12} >
           <Typography variant="h1">Evaluation</Typography>
         </Grid>
         <Grid item lg={6} md={6} xl={6} xs={12} >
-          <Typography variant="h6"  style={{display: 'inline-block', marginRight: '1em', paddingTop: '0.5em'}}>Academic Year</Typography>
+          <Typography variant="h6" style={{ display: 'inline-block', marginRight: '1em', paddingTop: '0.5em' }}>Academic Year</Typography>
           <Selector />
         </Grid>
-        <Grid
-          item xs={12}
-          >
-          <Typography variant="subtitle1">Available courses:</Typography>
-          </Grid>
+
+
         <Grid
           item
           lg={4}
