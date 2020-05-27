@@ -50,6 +50,7 @@ const LatestProducts = props => {
     >
       <CardHeader
         title="DM I"
+        subheader="Criteria selection"
       />
 
       <Divider />
@@ -65,7 +66,7 @@ const LatestProducts = props => {
               href="#simple-list"
             >
               <ListItemAvatar>
-                <CheckCircleIcon />
+                { product.isDone && <CheckCircleIcon /> }
               </ListItemAvatar>
               <ListItemText
                 primary={product.name}
@@ -77,7 +78,7 @@ const LatestProducts = props => {
         </List>
       </CardContent>
       <Divider />
-      <CardActions className={classes.actions}>
+      {/* <CardActions className={classes.actions}>
         <Button
           color="primary"
           size="small"
@@ -85,7 +86,7 @@ const LatestProducts = props => {
         >
           View all <ArrowRightIcon />
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };

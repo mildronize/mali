@@ -4,6 +4,7 @@ import { Grid, Typography, Select, FormControl, InputLabel, MenuItem, FormHelper
 
 import {
   CriteriaList,
+  Breadcrumbs
 } from './components';
 
 import mockDataDM1 from './data-dm1';
@@ -58,6 +59,11 @@ const Dashboard = () => {
           <Typography variant="h6"  style={{display: 'inline-block', marginRight: '1em', paddingTop: '0.5em'}}>Academic Year</Typography>
           <Selector />
         </Grid>
+        <Grid
+          item xs={12}
+          >
+          <Typography variant="subtitle1">Available courses:</Typography>
+          </Grid>
         <Grid
           item
           lg={4}
