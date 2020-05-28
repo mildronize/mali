@@ -12,7 +12,7 @@ import mockDataDM2 from './data-dm2';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(4)
+    // padding: theme.spacing(4)
   },
   breadcrumbs: {
     marginLeft: theme.spacing(1),
@@ -56,7 +56,7 @@ const Dashboard = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} >
         <Grid item lg={6} md={6} xl={6} xs={12} >
           <Typography variant="h1">Evaluation</Typography>
         </Grid>
@@ -68,18 +68,18 @@ const Dashboard = () => {
 
         <Grid
           item
-          lg={4}
+          lg={6}
           md={6}
-          xl={4}
+          sm={6}
           xs={12}
         >
           <CriteriaList products={productsDm1} />
         </Grid>
         <Grid
           item
-          lg={4}
+          lg={6}
           md={6}
-          xl={4}
+          sm={6}
           xs={12}
         >
           <CriteriaList products={productsDm2} />

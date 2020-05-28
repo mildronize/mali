@@ -11,7 +11,7 @@ import mockData from './data';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingLeft: theme.spacing(4)
+    // paddingLeft: theme.spacing(4)
   },
   content: {
     // marginTop: theme.spacing(2),
@@ -48,10 +48,10 @@ const EvaluationStudentList = () => {
 
   return (
     <div className={classes.root}>
-      <Grid container  >
+      {/* <Grid container  >
         <Grid
-          item lg={6} md={8} xl={6} xs={12}
-        >
+          item lg={8} md={8} xl={8} xs={12}
+        > */}
           <div className={classes.content}>
             <StudentsTable
               users={users}
@@ -59,8 +59,8 @@ const EvaluationStudentList = () => {
               setSelectedUser={setSelectedUser} />
           </div>
 
-        </Grid>
-      </Grid>
+        {/* </Grid>
+      </Grid> */}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
@@ -30,8 +30,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingLeft: theme.spacing(4)
-
+    // paddingLeft: theme.spacing(4)
   },
   image: {
     height: 48,
@@ -39,47 +38,52 @@ const useStyles = makeStyles(theme => ({
   },
   actions: {
     justifyContent: 'flex-end'
+  },
+  textArea: {
+    width: '600px'
   }
 }));
-
-
 
 const RadioTableRow = ({ row, radioScales }) => {
   const [selectedValue, setSelectedValue] = React.useState('');
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setSelectedValue(event.target.value);
     console.log(event.target.value);
   };
 
   return (
     <TableRow key={row.name}>
-      <TableCell component="th" scope="row">
+      <TableCell
+        component="th"
+        scope="row"
+      >
         {row.name}
       </TableCell>
 
-      {radioScales.map((radioScale) => (
-        <TableCell><Radio
-          checked={selectedValue === `${radioScale}`}
-          onChange={handleChange}
-          value={radioScale}
-          name="radio-button"
-          inputProps={{ 'aria-label': `${radioScale}` }}
-        /></TableCell>
+      {radioScales.map(radioScale => (
+        <TableCell>
+          <Radio
+            checked={selectedValue === `${radioScale}`}
+            inputProps={{ 'aria-label': `${radioScale}` }}
+            name="radio-button"
+            onChange={handleChange}
+            value={radioScale}
+          />
+        </TableCell>
       ))}
-      
     </TableRow>
   );
-}
+};
 
 const EvaluationForm = props => {
-  const { className, products , history, ...rest } = props;
+  const { className, products, history, ...rest } = props;
 
   const classes = useStyles();
 
   const handleSave = () => {
-    history.push("/evaluation/student-list");
-  }
+    history.push('/evaluation/student-list');
+  };
 
   const radioScales = [5, 4, 3, 2, 1];
 
@@ -90,24 +94,31 @@ const EvaluationForm = props => {
   const rows = [
     createData('Criteria 1', 'Frozen yoghurt'),
     createData('Criteria 2', 'Ice cream sandwich'),
-    createData('Criteria 3', 'Eclair'),
+    createData('Criteria 3', 'Eclair')
   ];
 
   return (
-    <div className={clsx(classes.root, className)} >
-      <Grid container  >
+    <div className={clsx(classes.root, className)}>
+      <Grid container>
         <Grid
-          item lg={6} md={8} xl={6} xs={12}
+          item
+          lg={12}
+          md={12}
+          sm={12}
+          xs={12}
         >
           <Card>
-            <CardHeader
-              title="Evaluation Form"
-            />
+            <CardHeader title="Evaluation Form" />
 
             <Divider />
-            <CardContent className={classes.content}>
 
-              <Table className={classes.table} aria-label="simple table">
+            <CardContent className={classes.content}>
+              <Typography variant="subtitle1">Name: Ekaterina Tankova</Typography>
+              <Typography variant="subtitle1">ID: Ekaterina Tankova</Typography>
+              <Table
+                aria-label="simple table"
+                className={classes.table}
+              >
                 <TableHead>
                   <TableRow>
                     <TableCell>Criteria Title</TableCell>
@@ -119,8 +130,11 @@ const EvaluationForm = props => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row) => (
-                    <RadioTableRow row={row} radioScales={radioScales}/>
+                  {rows.map(row => (
+                    <RadioTableRow
+                      radioScales={radioScales}
+                      row={row}
+                    />
                   ))}
                 </TableBody>
               </Table>
@@ -128,40 +142,39 @@ const EvaluationForm = props => {
               <Typography variant="h5">Remark</Typography>
               <TextareaAutosize
                 aria-label="minimum height"
-                rows={3}
+                classname={classes.textArea}
                 placeholder="Minimum 3 rows"
+                rows={3}
               />
               <Typography variant="h5">Suggestion / Comment</Typography>
               <TextareaAutosize
                 aria-label="minimum height"
-                rows={3}
                 placeholder="Minimum 3 rows"
+                rows={3}
               />
             </CardContent>
             <Divider />
             <CardActions className={classes.actions}>
               <Button
+                onClick={() => handleSave()}
                 size="small"
                 variant="text"
-                onClick={() => handleSave()}
               >
                 Cancell
-        </Button>
+              </Button>
               <Button
                 color="primary"
+                onClick={() => handleSave()}
                 size="small"
                 variant="contained"
-                onClick={() => handleSave()}
               >
                 Save
-        </Button>
-
+              </Button>
             </CardActions>
           </Card>
         </Grid>
       </Grid>
     </div>
-
   );
 };
 

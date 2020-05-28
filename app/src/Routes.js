@@ -5,7 +5,8 @@ import { RouteWithLayout } from './components';
 import { 
   Main as MainLayout, 
   Minimal as MinimalLayout,
-  MainWithBreadcrumbs as MainWithBreadcrumbsLayout, 
+  MainWithBreadcrumbs as MainWithBreadcrumbsLayout,
+  MainWithContainer as MainWithContainerLayout,
  } from './layouts';
 
 import {
@@ -35,7 +36,7 @@ const Routes = () => {
       <RouteWithLayout
         component={EvaluationView}
         exact
-        layout={MainLayout}
+        layout={MainWithContainerLayout}
         path="/evaluation"
       />
       <RouteWithLayout
