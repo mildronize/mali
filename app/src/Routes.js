@@ -2,12 +2,17 @@ import React from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 
 import { RouteWithLayout } from './components';
-import { Main as MainLayout, Minimal as MinimalLayout } from './layouts';
+import { 
+  Main as MainLayout, 
+  Minimal as MinimalLayout,
+  MainWithBreadcrumbs as MainWithBreadcrumbsLayout, 
+ } from './layouts';
 
 import {
   Dashboard as DashboardView,
   Evaluation as EvaluationView,
   EvaluationStudentList as EvaluationStudentListView,
+  EvaluationForm as EvaluationFormView,
   ProductList as ProductListView,
   UserList as UserListView,
   Typography as TypographyView,
@@ -33,11 +38,17 @@ const Routes = () => {
         layout={MainLayout}
         path="/evaluation"
       />
-<RouteWithLayout
+      <RouteWithLayout
         component={EvaluationStudentListView}
         exact
-        layout={MainLayout}
+        layout={MainWithBreadcrumbsLayout}
         path="/evaluation/student-list"
+      />
+      <RouteWithLayout
+        component={EvaluationFormView}
+        exact
+        layout={MainWithBreadcrumbsLayout}
+        path="/evaluation/student-list/form"
       />
       <RouteWithLayout
         component={DashboardView}

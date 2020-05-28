@@ -4,16 +4,14 @@ import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography, Card, CardContent, InputLabel, MenuItem, Hidden, Box, useMediaQuery } from '@material-ui/core';
 
 import {
-  Breadcrumbs,
-  StudentsTable,
-  EvaluationForm
+  StudentsTable
 } from './components';
 
 import mockData from './data';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(4)
+    paddingLeft: theme.spacing(4)
   },
   content: {
     // marginTop: theme.spacing(2),
@@ -28,8 +26,6 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(1),
   }
 }));
-
-
 
 const EvaluationStudentList = () => {
   const theme = useTheme();
@@ -53,39 +49,17 @@ const EvaluationStudentList = () => {
   return (
     <div className={classes.root}>
       <Grid container  >
-        <Grid item xs={12} >
-          <Typography variant="h1">Evaluation</Typography>
-        </Grid>
-        <Grid
-          item lg={12} xs={12}
-        >
-          <Breadcrumbs className={classes.breadcrumbs}
-            selectedName={selectedName}
-            setSelectedUser={setSelectedUser}
-          />
-        </Grid>
-        {
-          selectedUser === "" &&
-
-          <Grid
-            item lg={6} md={8} xl={6} xs={12}
-          >
-            {/* <Divider className={classes.divider} /> */}
-            <div className={classes.content}>
-              <StudentsTable
-                users={users}
-                selectedUser={selectedUser}
-                setSelectedUser={setSelectedUser} />
-            </div>
-
-          </Grid>
-        }
         <Grid
           item lg={6} md={8} xl={6} xs={12}
         >
-          {selectedUser !== "" && <EvaluationForm setSelectedUser={setSelectedUser}/>}
-        </Grid>
+          <div className={classes.content}>
+            <StudentsTable
+              users={users}
+              selectedUser={selectedUser}
+              setSelectedUser={setSelectedUser} />
+          </div>
 
+        </Grid>
       </Grid>
     </div>
   );

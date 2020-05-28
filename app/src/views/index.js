@@ -12,3 +12,4 @@ export { default as UserList } from './UserList';
 // My View
 export { default as Evaluation } from './Evaluation';
 export { default as EvaluationStudentList } from './EvaluationStudentList';
+export { default as EvaluationForm } from './EvaluationForm';

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withRouter } from "react-router-dom";
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -51,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const UsersTable = props => {
-  const { className, users, selectedUser, setSelectedUser,  ...rest } = props;
+  const { className, users, history, selectedUser, setSelectedUser,  ...rest } = props;
 
   const classes = useStyles();
 
@@ -64,10 +65,7 @@ const UsersTable = props => {
   };
 
   const clickRow = (event, id) => {
-    if(id === selectedUser)
-      setSelectedUser("");
-    else 
-      setSelectedUser(id);
+    history.push("/evaluation/student-list/form");
   };
 
   const handleRowsPerPageChange = event => {
@@ -149,4 +147,4 @@ UsersTable.propTypes = {
   users: PropTypes.array.isRequired
 };
 
-export default UsersTable;
+export default withRouter(UsersTable);
