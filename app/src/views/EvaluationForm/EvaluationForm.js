@@ -40,9 +40,13 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-end'
   },
   textArea: {
-    width: '600px'
+    
+  },
+  table: {
+    width: "100%"
   }
 }));
+
 
 const RadioTableRow = ({ row, radioScales }) => {
   const [selectedValue, setSelectedValue] = React.useState('');
@@ -53,16 +57,15 @@ const RadioTableRow = ({ row, radioScales }) => {
   };
 
   return (
-    <TableRow key={row.name}>
-      <TableCell
-        component="th"
-        scope="row"
-      >
+    <tr key={row.name}>
+     <td> <Typography variant="subtitle1">
         {row.name}
-      </TableCell>
+        </Typography>
+        </td>
+
 
       {radioScales.map(radioScale => (
-        <TableCell>
+        <td>
           <Radio
             checked={selectedValue === `${radioScale}`}
             inputProps={{ 'aria-label': `${radioScale}` }}
@@ -70,9 +73,9 @@ const RadioTableRow = ({ row, radioScales }) => {
             onChange={handleChange}
             value={radioScale}
           />
-        </TableCell>
+        </td>
       ))}
-    </TableRow>
+    </tr>
   );
 };
 
@@ -115,29 +118,25 @@ const EvaluationForm = props => {
             <CardContent className={classes.content}>
               <Typography variant="subtitle1">Name: Ekaterina Tankova</Typography>
               <Typography variant="subtitle1">ID: Ekaterina Tankova</Typography>
-              <Table
-                aria-label="simple table"
-                className={classes.table}
-              >
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Criteria Title</TableCell>
-                    <TableCell>5</TableCell>
-                    <TableCell>4</TableCell>
-                    <TableCell>3</TableCell>
-                    <TableCell>2</TableCell>
-                    <TableCell>1</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
+              
+                <table className={classes.table}>
+                  <tr>
+                    <th>Criteria Title</th>
+                    <th>5</th>
+                    <th>4</th>
+                    <th>3</th>
+                    <th>2</th>
+                    <th>1</th>
+                  </tr>
+       
                   {rows.map(row => (
                     <RadioTableRow
                       radioScales={radioScales}
                       row={row}
                     />
                   ))}
-                </TableBody>
-              </Table>
+             
+              </table>
 
               <Typography variant="h5">Remark</Typography>
               <TextareaAutosize
