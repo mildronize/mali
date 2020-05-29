@@ -24,6 +24,10 @@ import {
 } from '@material-ui/core';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
+import {
+  TextEditor
+} from "components";
+
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -40,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-end'
   },
   textArea: {
-    
+
   },
   table: {
     width: "100%"
@@ -58,10 +62,10 @@ const RadioTableRow = ({ row, radioScales }) => {
 
   return (
     <tr key={row.name}>
-     <td> <Typography variant="subtitle1">
+      <td> <Typography variant="subtitle1">
         {row.name}
-        </Typography>
-        </td>
+      </Typography>
+      </td>
 
 
       {radioScales.map(radioScale => (
@@ -118,39 +122,30 @@ const EvaluationForm = props => {
             <CardContent className={classes.content}>
               <Typography variant="subtitle1">Name: Ekaterina Tankova</Typography>
               <Typography variant="subtitle1">ID: Ekaterina Tankova</Typography>
-              
-                <table className={classes.table}>
-                  <tr>
-                    <th>Criteria Title</th>
-                    <th>5</th>
-                    <th>4</th>
-                    <th>3</th>
-                    <th>2</th>
-                    <th>1</th>
-                  </tr>
-       
-                  {rows.map(row => (
-                    <RadioTableRow
-                      radioScales={radioScales}
-                      row={row}
-                    />
-                  ))}
-             
+
+              <table className={classes.table}>
+                <tr>
+                  <th>Criteria Title</th>
+                  <th>5</th>
+                  <th>4</th>
+                  <th>3</th>
+                  <th>2</th>
+                  <th>1</th>
+                </tr>
+
+                {rows.map(row => (
+                  <RadioTableRow
+                    radioScales={radioScales}
+                    row={row}
+                  />
+                ))}
+
               </table>
 
               <Typography variant="h5">Remark</Typography>
-              <TextareaAutosize
-                aria-label="minimum height"
-                classname={classes.textArea}
-                placeholder="Minimum 3 rows"
-                rows={3}
-              />
+              <TextEditor placeholder="Type the remark ... "/>
               <Typography variant="h5">Suggestion / Comment</Typography>
-              <TextareaAutosize
-                aria-label="minimum height"
-                placeholder="Minimum 3 rows"
-                rows={3}
-              />
+              <TextEditor placeholder="Type the suggestion/comment ... "/>
             </CardContent>
             <Divider />
             <CardActions className={classes.actions}>
