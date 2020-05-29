@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const UsersTable = props => {
-  const { className, users, history, selectedUser, setSelectedUser,  ...rest } = props;
+  const { className, users, dmType, criteria, history, selectedUser, setSelectedUser,  ...rest } = props;
 
   const classes = useStyles();
 
@@ -65,7 +65,7 @@ const UsersTable = props => {
   };
 
   const clickRow = (event, id) => {
-    history.push("/evaluation/student-list/form");
+    history.push(`/evaluation/${dmType}/${criteria}/${id}`);
   };
 
   const handleRowsPerPageChange = event => {

@@ -43,13 +43,13 @@ const Routes = () => {
         component={EvaluationStudentListView}
         exact
         layout={MainWithBreadcrumbsLayout}
-        path="/evaluation/student-list"
+        path="/evaluation/:dmType/:criteria"
       />
       <RouteWithLayout
         component={EvaluationFormView}
         exact
         layout={MainWithBreadcrumbsLayout}
-        path="/evaluation/student-list/form"
+        path="/evaluation/:dmType/:criteria/:studentID"
       />
       <RouteWithLayout
         component={DashboardView}

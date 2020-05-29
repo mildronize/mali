@@ -102,12 +102,13 @@ const RadioTableRow = ({ row, radioScales }) => {
 };
 
 const EvaluationForm = props => {
-  const { className, products, history, ...rest } = props;
+  const { className, match, history, ...rest } = props;
+  const  { dmType, criteria }  = match.params;
 
   const classes = useStyles();
 
   const handleSave = () => {
-    history.push('/evaluation/student-list');
+    history.push(`/evaluation/${dmType}/${criteria}`);
   };
 
   const radioScales = [5, 4, 3, 2, 1];

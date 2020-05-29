@@ -51,8 +51,8 @@ const Selector = () => {
 const Dashboard = () => {
   const classes = useStyles();
 
-  const [productsDm1] = useState(mockDataDM1);
-  const [productsDm2] = useState(mockDataDM2);
+  const [dataDm1] = useState(mockDataDM1);
+  const [dataDm2] = useState(mockDataDM2);
 
   return (
     <div className={classes.root}>
@@ -73,7 +73,7 @@ const Dashboard = () => {
           sm={6}
           xs={12}
         >
-          <CriteriaList products={productsDm1} />
+          <CriteriaList data={dataDm1} />
         </Grid>
         <Grid
           item
@@ -82,7 +82,7 @@ const Dashboard = () => {
           sm={6}
           xs={12}
         >
-          <CriteriaList products={productsDm2} />
+          <CriteriaList data={dataDm2} />
         </Grid>
 
       </Grid>

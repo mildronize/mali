@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useParams } from 'react';
 import { makeStyles } from '@material-ui/styles';
 import { useTheme } from '@material-ui/core/styles';
 import { Grid, Typography, Card, CardContent, InputLabel, MenuItem, Hidden, Box, useMediaQuery } from '@material-ui/core';
@@ -27,10 +27,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EvaluationStudentList = () => {
+const EvaluationStudentList = ({ match }) => {
   const theme = useTheme();
   const classes = useStyles();
 
+  // console.log(match);
+
+  const  { dmType, criteria }  = match.params;
+  console.log(dmType, criteria);
   const [users] = useState(mockData);
   const [selectedName, setSelectedName] = useState("");
   const [selectedUser, _setSelectedUser] = useState("");
@@ -52,14 +56,16 @@ const EvaluationStudentList = () => {
         <Grid
           item lg={8} md={8} xl={8} xs={12}
         > */}
-          <div className={classes.content}>
-            <StudentsTable
-              users={users}
-              selectedUser={selectedUser}
-              setSelectedUser={setSelectedUser} />
-          </div>
+      <div className={classes.content}>
+        <StudentsTable
+          users={users}
+          dmType={dmType}
+          criteria={criteria}
+          selectedUser={selectedUser}
+          setSelectedUser={setSelectedUser} />
+      </div>
 
-        {/* </Grid>
+      {/* </Grid>
       </Grid> */}
     </div>
   );

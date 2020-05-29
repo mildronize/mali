@@ -14,10 +14,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(2),
   },
   richTextEditor: {
-    fontFamily: "inherit",
-    "&h1" :{
-      paddingTop: "10em"
-    }
+    fontFamily: "inherit"
   }
 }));
 
@@ -29,7 +26,6 @@ const TextEditor = props => {
 
   const onChange = (newValue) => {
     setValue(newValue);
-
   };
 
   const toolbarConfig = {

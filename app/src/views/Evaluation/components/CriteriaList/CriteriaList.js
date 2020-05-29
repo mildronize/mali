@@ -19,6 +19,7 @@ import {
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import { CriteriaList } from '..';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -37,11 +38,13 @@ const useStyles = makeStyles(() => ({
 }));
 
 const LatestProducts = props => {
-  const { className, products, ...rest } = props;
+  const { className, data, ...rest } = props;
 
   const classes = useStyles();
 
   // const [products] = useState(mockData);
+
+  const criteriaList = data.criteria;
 
   return (
     <Card
@@ -49,30 +52,30 @@ const LatestProducts = props => {
       className={clsx(classes.root, className)}
     >
       <CardHeader
-        title="DM I"
+        title={data.courseTitle}
         subheader="Criteria selection"
       />
 
       <Divider />
       <CardContent className={classes.content}>
         <List>
-          {products.map((product, i) => (
+          {criteriaList.map((criteria, i) => (
           
             <ListItem
               button 
-              divider={i < products.length - 1}
-              key={product.id}
+              divider={i < criteria.length - 1}
+              key={criteria.id}
               component="a"
-              href="/evaluation/student-list"
+              href={`/evaluation/${data.courseTitleSlug}/${criteria.id}`}
             >
               <ListItemAvatar>
-                { product.isDone && <CheckCircleIcon /> }
+                { criteria.isDone && <CheckCircleIcon /> }
               </ListItemAvatar>
               <ListItemText
-                primary={product.name}
-                // secondary={`Updated ${product.updatedAt.fromNow()}`}
+                primary={criteria.name}
+                // secondary={`Updated ${criteria.updatedAt.fromNow()}`}
               />
-              <Typography variant="subtitle1">{product.ratio}%</Typography>
+              <Typography variant="subtitle1">{criteria.ratio}%</Typography>
             </ListItem>
           ))}
         </List>
