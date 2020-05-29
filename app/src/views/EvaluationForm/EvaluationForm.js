@@ -19,7 +19,7 @@ import {
   Typography,
   FormControl,
   RadioGroup,
-  FormControlLabel,
+  Box,
   Radio
 } from '@material-ui/core';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
@@ -46,15 +46,33 @@ const useStyles = makeStyles(theme => ({
   textArea: {
 
   },
+  tableContainer: {
+    overflowX: "auto"
+  },
   table: {
-    width: "100%"
+    width: "90%",
+    border: "none"
+  },
+  tableCell: {
+    textAlign: "center",  
+    borderBottom: "1px solid #ddd",
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1)
+  },
+  tableCellLeft: {
+    textAlign: "left",
+    borderBottom: "1px solid #ddd"
+  },
+  paragraphSpacing: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1)
   }
 }));
 
 
 const RadioTableRow = ({ row, radioScales }) => {
   const [selectedValue, setSelectedValue] = React.useState('');
-
+  const classes = useStyles();
   const handleChange = event => {
     setSelectedValue(event.target.value);
     console.log(event.target.value);
@@ -62,14 +80,14 @@ const RadioTableRow = ({ row, radioScales }) => {
 
   return (
     <tr key={row.name}>
-      <td> <Typography variant="subtitle1">
+      <td className={classes.tableCellLeft}> <Typography variant="subtitle1">
         {row.name}
       </Typography>
       </td>
 
 
       {radioScales.map(radioScale => (
-        <td>
+        <td className={classes.tableCell}>
           <Radio
             checked={selectedValue === `${radioScale}`}
             inputProps={{ 'aria-label': `${radioScale}` }}
@@ -120,32 +138,38 @@ const EvaluationForm = props => {
             <Divider />
 
             <CardContent className={classes.content}>
-              <Typography variant="subtitle1">Name: Ekaterina Tankova</Typography>
-              <Typography variant="subtitle1">ID: Ekaterina Tankova</Typography>
+              <Typography className={classes.paragraphSpacing} variant="subtitle1"><strong>Name:</strong> Ekaterina Tankova</Typography>
+              <Typography className={classes.paragraphSpacing} variant="subtitle1"><strong>ID:</strong>58101200123</Typography>
+              <Divider />
+              <Typography className={classes.paragraphSpacing} variant="h5">Evaluation Table:</Typography>
+              <Box my={4} className={classes.tableContainer} >
+                
+                <Box display="flex" justifyContent="center">
+                  <table className={classes.table} cellspacing="0" cellpadding="0">
+                    <tr>
+                      <th className={classes.tableCellLeft}><Typography variant="h6">Criteria Title</Typography></th>
+                      {radioScales.map(radioScale => (
+                        <th className={classes.tableCell}><Typography variant="h6">{radioScale}</Typography></th>
+                      ))}
+                    </tr>
 
-              <table className={classes.table}>
-                <tr>
-                  <th>Criteria Title</th>
-                  <th>5</th>
-                  <th>4</th>
-                  <th>3</th>
-                  <th>2</th>
-                  <th>1</th>
-                </tr>
+                    {rows.map(row => (
+                      <RadioTableRow
+                        radioScales={radioScales}
+                        row={row}
+                      />
+                    ))}
 
-                {rows.map(row => (
-                  <RadioTableRow
-                    radioScales={radioScales}
-                    row={row}
-                  />
-                ))}
-
-              </table>
-
-              <Typography variant="h5">Remark</Typography>
-              <TextEditor placeholder="Type the remark ... "/>
-              <Typography variant="h5">Suggestion / Comment</Typography>
-              <TextEditor placeholder="Type the suggestion/comment ... "/>
+                  </table>
+                </Box>
+              </Box>
+              <Divider />
+              <Typography className={classes.paragraphSpacing} variant="h5">Note:</Typography>
+              <Typography variant="body2">Personal Note, the student don't see your note</Typography>
+              <TextEditor placeholder="Type the remark ... " />
+              <Typography className={classes.paragraphSpacing} variant="h5">Suggestion / Comment:</Typography>
+              <Typography variant="body2">Sugesstion will be public for student</Typography>
+              <TextEditor placeholder="Type the suggestion/comment ... " />
             </CardContent>
             <Divider />
             <CardActions className={classes.actions}>
