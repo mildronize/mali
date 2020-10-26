@@ -7,6 +7,10 @@ import {
   StudentsTable
 } from './components';
 
+import {
+  Breadcrumbs
+} from 'components';
+
 import mockData from './data';
 
 const useStyles = makeStyles(theme => ({
@@ -33,6 +37,29 @@ const EvaluationStudentList = ({ match }) => {
 
   // console.log(match);
 
+  // const breadcrumbsPagesGenerator = () => {
+  //   const foundObject = users.find(({ id }) => id === userID);
+  //     if (foundObject !== undefined)
+  //       setSelectedName(foundObject.name);
+  // }
+
+  const breadcrumbsPages = [
+    {
+      title: 'Home',
+      href: '/evaluation',
+      isLink: true
+    },
+    {
+      title: 'DM I',
+      isLink: false
+    },
+    {
+      title: 'PROGRESS 1',
+      href: '/evaluation',
+      isLink: true
+    }
+  ];
+
   const  { dmType, criteria }  = match.params;
   console.log(dmType, criteria);
   const [users] = useState(mockData);
@@ -52,10 +79,11 @@ const EvaluationStudentList = ({ match }) => {
 
   return (
     <div className={classes.root}>
-      {/* <Grid container  >
-        <Grid
-          item lg={8} md={8} xl={8} xs={12}
-        > */}
+      <Typography variant="h1">Evaluation</Typography>
+      
+      <Breadcrumbs 
+        pages={breadcrumbsPages}
+       />
       <div className={classes.content}>
         <StudentsTable
           users={users}
@@ -65,8 +93,6 @@ const EvaluationStudentList = ({ match }) => {
           setSelectedUser={setSelectedUser} />
       </div>
 
-      {/* </Grid>
-      </Grid> */}
     </div>
   );
 };

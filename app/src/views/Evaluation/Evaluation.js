@@ -7,8 +7,7 @@ import {
   Breadcrumbs
 } from './components';
 
-import mockDataDM1 from './data-dm1';
-import mockDataDM2 from './data-dm2';
+import mockDataDM from './data-dm';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,8 +50,8 @@ const Selector = () => {
 const Dashboard = () => {
   const classes = useStyles();
 
-  const [dataDm1] = useState(mockDataDM1);
-  const [dataDm2] = useState(mockDataDM2);
+  const [dataDm1] = useState(mockDataDM[0]);
+  const [dataDm2] = useState(mockDataDM[1]);
 
   return (
     <div className={classes.root}>

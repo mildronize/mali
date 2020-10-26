@@ -47,6 +47,9 @@ const useStyles = makeStyles(theme => ({
   },
   actions: {
     justifyContent: 'flex-end'
+  },
+  tableRow:{
+    cursor: 'pointer'
   }
 
 }));
